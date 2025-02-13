@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Fundo mais suave */
+            font-family: Arial, sans-serif; /* Fonte padrão */
+        }
+
+        .box {
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            height: 250px;
+            width: 350px;
+            border-radius: 10px;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar a caixa */
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 50px;
+            width: 150px;
+            margin-top: 20px; /* Espaçamento acima dos botões */
+        }
+
+        button {
+            height: 30px;
+            width: 50px;
+            background: rgb(255, 255, 255);
+            color: black;
+            font-weight: 600;
+            border-radius: 5px;
+            border: 2px solid black;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.3s ease; /* Transição suave */
+        }
+
+        button:hover {
+            background: #ddd; /* Efeito hover */
+        }
+
+        /* Estilizando o link corretamente */
+        .yes-button {
+            text-decoration: none;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        #no {
+            transition: top 0.3s ease, left 0.3s ease; /* Movimento suave */
+        }
+    </style>
+    <title>Pedido Irrecusável</title>
+</head>
+<body>
+    <div class="box">
+        <p>BORA TOMAR UMA HOJE?</p>
+        <div class="buttons-container">
+            <button>
+                <a class="yes-button" href="https://www.youtube.com/watch?v=8HVLFySv1yQ" aria-label="Sim">Sim</a>
+            </button>
+            <button id="no" aria-label="Não">Não</button>
+        </div>
+    </div>
+</body>
+<script>
+    let button = document.getElementById('no');
+
+    function moveButton() {
+        let height = window.innerHeight - 60; // Garante que o botão não vá para fora da tela
+        let width = window.innerWidth - 60;
+        button.style.position = "absolute";
+        button.style.top = Math.random() * height + "px";
+        button.style.left = Math.random() * width + "px";
+    }
+
+    button.addEventListener('mouseover', moveButton);
+    button.addEventListener('touchstart', moveButton); // Suporte para celular
+</script>
+</html>
