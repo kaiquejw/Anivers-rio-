@@ -10,9 +10,11 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0; /* Fundo mais suave */
-            font-family: Arial, sans-serif; /* Fonte padrão */
-        }
+            background: url('https://ys4yllnd9y.ufs.sh/f/pdthHOqrtk8x9ew4FD2xlhyLJQn80sY43GaIXkWFObdV5E6v') no-repeat center center fixed; /* Fundo mais suave */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            } /* Fonte padrão */
+            
 
         .box {
             font-size: 20px;
@@ -69,32 +71,67 @@
         #no {
             transition: top 0.3s ease, left 0.3s ease; /* Movimento suave */
         }
-    </style>
-    <title>Pedido Irrecusável</title>
+     /* Estilo para a mensagem "Errou!" */
+     #errou {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 0, 0, 0.8);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1.5em;
+      opacity: 0;
+      transition: opacity 0.5s;
+      z-index: 1000;
+      pointer-events: none;
+    }
+  </style>
+  <title>Pedido Irrecusável</title>
 </head>
 <body>
-    <div class="box">
-        <p>100 Reais ou um presente misterioso?</p>
-        <div class="buttons-container">
-            <button>
-                <a class="yes-button" href="https://www.youtube.com/watch?v=l04_GGlr3BI" aria-label="Sim">Presente</a>
-            </button>
-            <button id="no" aria-label="Não">100</button>
-        </div>
+  <!-- Mensagem "Errou!" -->
+  <div id="errou">Errou!</div>
+
+  <div class="box">
+    <p>100 Reais ou um presente misterioso?</p>
+    <div class="buttons-container">
+      <button>
+        <a class="yes-button" href="https://www.youtube.com/watch?v=l04_GGlr3BI" aria-label="Sim">Presente</a>
+      </button>
+      <button id="no" aria-label="Não">100</button>
     </div>
-</body>
-<script>
+  </div>
+
+  <script>
     let button = document.getElementById('no');
+    let errouMsg = document.getElementById('errou');
 
     function moveButton() {
-        let height = window.innerHeight - 60; // Garante que o botão não vá para fora da tela
-        let width = window.innerWidth - 60;
-        button.style.position = "absolute";
-        button.style.top = Math.random() * height + "px";
-        button.style.left = Math.random() * width + "px";
+      let height = window.innerHeight - 60; // Garante que o botão não vá para fora da tela
+      let width = window.innerWidth - 60;
+      button.style.position = "absolute";
+      button.style.top = Math.random() * height + "px";
+      button.style.left = Math.random() * width + "px";
     }
 
-    button.addEventListener('mouseover', moveButton);
-    button.addEventListener('touchstart', moveButton); // Suporte para celular
-</script>
+    // Ao passar o mouse ou tocar sobre o botão, ele se move e exibe a mensagem "Errou!"
+    button.addEventListener('mouseover', () => {
+      moveButton();
+      errouMsg.style.opacity = "1";
+      setTimeout(() => {
+        errouMsg.style.opacity = "0";
+      }, 1500);
+    });
+
+    button.addEventListener('touchstart', () => {
+      moveButton();
+      errouMsg.style.opacity = "1";
+      setTimeout(() => {
+        errouMsg.style.opacity = "0";
+      }, 1500);
+    });
+  </script>
+</body>
 </html>
