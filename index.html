@@ -29,9 +29,7 @@
             justify-content: center;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar a caixa */
-            position: relative;
-            padding: 20px; /* Opcional para evitar que o conteúdo fique muito colado nas bordas */
-            }
+        }
 
         .buttons-container {
             display: flex;
@@ -89,32 +87,6 @@
       z-index: 1000;
       pointer-events: none;
     }
-    /* Media queries para telas menores */
-    @media (max-width: 600px) {
-      .box {
-        width: 90%;
-        height: auto; /* Permite que a altura se ajuste ao conteúdo */
-        font-size: 18px;
-        padding: 15px;
-      }
-
-      .buttons-container {
-        flex-direction: column;
-        width: 100%;
-        height: auto;
-      }
-
-      button {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-
-      /* Caso queira diminuir o tamanho da mensagem em telas pequenas */
-      #errou {
-        font-size: 1.2em;
-        padding: 8px 16px;
-      }
-    }
   </style>
   <title>Pedido Irrecusável</title>
 </head>
@@ -144,18 +116,15 @@
       button.style.left = Math.random() * width + "px";
     }
 
-    // Ao passar o mouse ou tocar sobre o botão, ele se move e exibe a mensagem "Errou!"
-    button.addEventListener('mouseover', () => {
-      moveButton();
-      errouMsg.style.opacity = "1";
-      setTimeout(() => {
-        errouMsg.style.opacity = "0";
-      }, 1500);
-    });
+    // Evento para mover o botão quando o mouse passar por cima ou em toque na tela
+    button.addEventListener('mouseover', moveButton);
+    button.addEventListener('touchstart', moveButton);
 
-    button.addEventListener('touchstart', () => {
-      moveButton();
+    // Exibe a mensagem "Errou!" quando o botão for clicado
+    button.addEventListener('click', (e) => {
+      e.preventDefault(); // previne ação padrão, caso o clique ocorra
       errouMsg.style.opacity = "1";
+      // Oculta a mensagem após 1.5 segundos
       setTimeout(() => {
         errouMsg.style.opacity = "0";
       }, 1500);
