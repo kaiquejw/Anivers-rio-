@@ -29,7 +29,9 @@
             justify-content: center;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar a caixa */
-        }
+            position: relative;
+            padding: 20px; /* Opcional para evitar que o conteúdo fique muito colado nas bordas */
+            }
 
         .buttons-container {
             display: flex;
@@ -86,6 +88,32 @@
       transition: opacity 0.5s;
       z-index: 1000;
       pointer-events: none;
+    }
+    /* Media queries para telas menores */
+    @media (max-width: 600px) {
+      .box {
+        width: 90%;
+        height: auto; /* Permite que a altura se ajuste ao conteúdo */
+        font-size: 18px;
+        padding: 15px;
+      }
+
+      .buttons-container {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+      }
+
+      button {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      /* Caso queira diminuir o tamanho da mensagem em telas pequenas */
+      #errou {
+        font-size: 1.2em;
+        padding: 8px 16px;
+      }
     }
   </style>
   <title>Pedido Irrecusável</title>
